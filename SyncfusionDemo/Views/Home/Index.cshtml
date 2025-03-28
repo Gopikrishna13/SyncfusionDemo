@@ -1,0 +1,16 @@
+﻿@using Syncfusion.EJ2.Grids
+
+<h1>Product List</h1>
+
+@(Html.EJS().Grid<object>("Grid")
+    .DataSource((IEnumerable<object>)ViewBag.DataSource)
+    .AllowPaging()
+    .AllowSorting()
+    .Columns(col =>
+    {
+        col.Field("productId").HeaderText("Product ID").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+        col.Field("productName").HeaderText("Product Name").Add();
+        col.Field("price").HeaderText("Price").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+    })
+    .Render()
+)
