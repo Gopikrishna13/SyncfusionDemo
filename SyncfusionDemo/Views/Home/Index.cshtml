@@ -1,4 +1,6 @@
 ﻿@using Syncfusion.EJ2.Grids
+@using Syncfusion.EJ2.Charts
+
 
 <h1>Product List</h1>
 
@@ -9,8 +11,29 @@
     .Columns(col =>
     {
         col.Field("productId").HeaderText("Product ID").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
-        col.Field("productName").HeaderText("Product Name").Add();
-        col.Field("price").HeaderText("Price").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+        col.Field("ProductName").HeaderText("Product Name").Add();
+        col.Field("Price").HeaderText("Price").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
     })
     .Render()
 )
+
+
+
+@Html.EJS().Chart("container").Title("Product Prices").Series(series =>
+    {
+        series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line) 
+            .XName("productName")  
+            .YName("price") 
+            .DataSource(ViewBag.DataSource)
+            .Name("Price")
+         
+            .Add();
+    }).PrimaryXAxis(px =>
+        px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category) 
+          .Title("Products") 
+    ).PrimaryYAxis(py =>
+        py.Title("Price (USD)") 
+          .LabelFormat("${value}")  
+    ).Tooltip(tt => tt.Enable(true)).LegendSettings(ls => ls.Visible(true)).Render()
+
+ 

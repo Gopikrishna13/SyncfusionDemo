@@ -4,7 +4,7 @@ using Syncfusion;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Register Syncfusion license (replace with your actual license key)
+
 SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NNaF5cXmBCekx0Qnxbf1x1ZFREalhVTnNXUiweQnxTdEBjWn1WcHRRQ2BdUEJxWElfag==");
 
 // Add services to the container.
